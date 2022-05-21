@@ -46,7 +46,7 @@ String resultcamera;
                 fileuri = Uri.parse(resultcamera);
                 Log.e("Camera",fileuri.toString());
             }
-           // Log.e("GEtIntent",result);
+
 
 
         }
@@ -65,6 +65,11 @@ String resultcamera;
         }
         else if(resultCode==UCrop.RESULT_ERROR){
             final Throwable croperror = UCrop.getError(data);
+
+        }
+        else{
+
+            finish();
         }
 
     }
