@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
+            return;
         }
         if (resultCode == RESULT_OK && requestCode == 101) {
             String resu = data.getStringExtra("RESULT");
@@ -159,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.setData(Uri.fromFile(outFile));
                     MainActivity.this.sendBroadcast(intent);
 
+
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -166,35 +168,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
+
         }
-        else{
-            if(imageUri!=null){
-                image.setImageURI(imageUri);
-                drawable = (BitmapDrawable) image.getDrawable();
-                bitmapsave = drawable.getBitmap();
-                FileOutputStream outputStream = null;
-                File storage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-                String filename = String.format("%d.jpg", System.currentTimeMillis());
-                File outFile = new File(storage, filename);
-                try {
-
-                    outputStream = new FileOutputStream(outFile);
-                    bitmapsave.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-                    outputStream.flush();
-                    outputStream.close();
-                    Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                    intent.setData(Uri.fromFile(outFile));
-                    MainActivity.this.sendBroadcast(intent);
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
+         else{
+             image.setImageURI(imageUri);
         }
     }
+
 
 
 }

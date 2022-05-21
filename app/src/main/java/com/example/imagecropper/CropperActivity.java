@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.yalantis.ucrop.UCrop;
 
@@ -18,11 +19,13 @@ String result;
 Uri fileuri;
 String resultcamera;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("SecondActivity");
         setContentView(R.layout.activity_cropper);
+
         readintent();
         UCrop.Options options = new UCrop.Options();
 
